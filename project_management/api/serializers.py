@@ -7,12 +7,20 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email']
 
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ['id', 'project_name']
+
 class ClientSerializer(serializers.ModelSerializer):
     created_by = serializers.ReadOnlyField(source='created_by.username')
+    projects = ProjectSerializer(many=True, read_only=True, source='project_set')  # ✅ Include projects
 
     class Meta:
         model = Client
-        fields = '__all__'
+        fields = ['id', 'client_name', 'projects', 'created_at', 'updated_at', 'created_by']
+
 class ProjectSerializer(serializers.ModelSerializer):
     client = serializers.PrimaryKeyRelatedField(queryset=Client.objects.all())  # ✅ Accepts client ID
     users = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())  # ✅ Accepts user IDs
