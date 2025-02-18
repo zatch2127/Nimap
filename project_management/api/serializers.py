@@ -15,15 +15,15 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class ClientSerializer(serializers.ModelSerializer):
     created_by = serializers.ReadOnlyField(source='created_by.username')
-    projects = ProjectSerializer(many=True, read_only=True, source='project_set')  # ✅ Include projects
+    projects = ProjectSerializer(many=True, read_only=True, source='project_set')  #  Include projects
 
     class Meta:
         model = Client
         fields = ['id', 'client_name', 'projects', 'created_at', 'updated_at', 'created_by']
 
 class ProjectSerializer(serializers.ModelSerializer):
-    client = serializers.PrimaryKeyRelatedField(queryset=Client.objects.all())  # ✅ Accepts client ID
-    users = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())  # ✅ Accepts user IDs
+    client = serializers.PrimaryKeyRelatedField(queryset=Client.objects.all())  #  Accepts client ID
+    users = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())  #  Accepts user IDs
     created_by = serializers.ReadOnlyField(source='created_by.username')
     created_at = serializers.ReadOnlyField()
 
