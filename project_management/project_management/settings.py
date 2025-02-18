@@ -86,17 +86,15 @@ WSGI_APPLICATION = "project_management.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  # MySQL backend
-        'NAME': 'nimap',  # Replace with the actual name of your MySQL database
-        'USER': 'root',  # Your MySQL username (default is 'root')
-        'PASSWORD': 'Shai@2127',  # Your MySQL password
-        'HOST': '127.0.0.1',  # Use '127.0.0.1' instead of 'localhost' to avoid socket issues
-        'PORT': '3306',  # Default MySQL port
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'your_db_name',
+        'USER': 'your_db_user',
+        'PASSWORD': 'your_db_password',
+        'HOST': 'localhost',
+        'PORT': '3306', 
     }
 }
+
 
 
 # Password validation
