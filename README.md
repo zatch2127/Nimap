@@ -216,6 +216,82 @@ Copy `access_token` and use it in all API requests.
   ```
   Authorization: Bearer your_access_token
   ```
+  - **Expected Response:**
+  ```
+ [
+    {
+        "id": 1,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:02:36.568657Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 2,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:11:59.429003Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 4,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:28:25.691090Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 5,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:32:18.242247Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 6,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:40:39.005198Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 7,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:41:47.906098Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 8,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-18T03:51:43.050946Z",
+        "created_by": "zaid"
+    }
+]
+
+  ```
 
 ### 🟢 Step 10: Delete a Project
 - **Method:** DELETE  
