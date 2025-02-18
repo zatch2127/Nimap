@@ -93,12 +93,8 @@ Since the API requires authentication, you need a JWT token.
 1️⃣ Get JWT Token
 Method: POST
 URL:
-ruby
-
 http://127.0.0.1:8000/api/token/
 Headers:
-pgsql
-
 Content-Type: application/json
 Body (JSON):
 json
@@ -119,8 +115,6 @@ Copy access_token and use it in all API requests.
 🟢 Step 3: List All Clients
 Method: GET
 URL:
-ruby
-
 http://127.0.0.1:8000/api/clients/
 Headers:
 makefile
@@ -132,25 +126,75 @@ json
 [
     {
         "id": 1,
-        "client_name": "Nimap",
-        "created_at": "2019-12-24T11:03:55.931739+05:30",
-        "created_by": "Rohit"
+        "client_name": "Company B",
+        "projects": [
+            {
+                "id": 1,
+                "project_name": "Project A"
+            },
+            {
+                "id": 2,
+                "project_name": "Project A"
+            },
+            {
+                "id": 4,
+                "project_name": "Project A"
+            },
+            {
+                "id": 5,
+                "project_name": "Project A"
+            },
+            {
+                "id": 6,
+                "project_name": "Project A"
+            },
+            {
+                "id": 7,
+                "project_name": "Project A"
+            }
+        ],
+        "created_at": "2025-02-17T15:02:13.795352Z",
+        "updated_at": "2025-02-18T05:25:39.038304Z",
+        "created_by": "zaid"
     },
     {
         "id": 2,
-        "client_name": "Infotech",
-        "created_at": "2019-12-24T11:03:55.931739+05:30",
-        "created_by": "Rohit"
+        "client_name": "campany B",
+        "projects": [],
+        "created_at": "2025-02-17T16:23:09.566921Z",
+        "updated_at": "2025-02-18T04:44:51Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 4,
+        "client_name": "Company R",
+        "projects": [],
+        "created_at": "2025-02-18T04:47:07.934553Z",
+        "updated_at": "2025-02-18T04:47:08Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 5,
+        "client_name": "Company C",
+        "projects": [],
+        "created_at": "2025-02-18T05:01:32.080409Z",
+        "updated_at": "2025-02-18T05:01:32Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 6,
+        "client_name": "Company K",
+        "projects": [],
+        "created_at": "2025-02-18T05:13:50.707524Z",
+        "updated_at": null,
+        "created_by": "zaid"
     }
 ]
 🟢 Step 4: Create a New Client
 Method: POST
 URL:
-ruby
-
 http://127.0.0.1:8000/api/clients/
 Headers:
-pgsql
 
 Authorization: Bearer your_access_token
 Content-Type: application/json
@@ -158,50 +202,67 @@ Body (JSON):
 json
 
 {
-    "client_name": "Company A"
+    "client_name": "Company C"
 }
 Expected Response:
 json
 
 {
-    "id": 3,
-    "client_name": "Company A",
-    "created_at": "2019-12-24T11:03:55.931739+05:30",
-    "created_by": "Your Username"
+    "id": 7,
+    "client_name": "Company B",
+    "projects": [],
+    "created_at": "2025-02-18T05:27:19.759788Z",
+    "updated_at": null,
+    "created_by": "zaid"
 }
 🟢 Step 5: Retrieve Client Info (With Assigned Projects)
 Method: GET
 URL:
-ruby
 
 http://127.0.0.1:8000/api/clients/3/
 Headers:
-makefile
 
 Authorization: Bearer your_access_token
 Expected Response:
 json
-
 {
-    "id": 3,
-    "client_name": "Infotech",
+    "id": 1,
+    "client_name": "Company B",
     "projects": [
         {
             "id": 1,
-            "name": "Project A"
+            "project_name": "Project A"
+        },
+        {
+            "id": 2,
+            "project_name": "Project A"
+        },
+        {
+            "id": 4,
+            "project_name": "Project A"
+        },
+        {
+            "id": 5,
+            "project_name": "Project A"
+        },
+        {
+            "id": 6,
+            "project_name": "Project A"
+        },
+        {
+            "id": 7,
+            "project_name": "Project A"
         }
     ],
-    "created_at": "2019-12-24T11:03:55.931739+05:30",
-    "created_by": "Rohit",
-    "updated_at": "2019-12-24T11:03:55.931739+05:30"
+    "created_at": "2025-02-17T15:02:13.795352Z",
+    "updated_at": "2025-02-18T05:25:39.038304Z",
+    "created_by": "zaid"
 }
 🟢 Step 6: Update Client Info
 Method: PUT
 URL:
-http://127.0.0.1:8000/api/clients/3/
+http://127.0.0.1:8000/api/clients/2/
 Headers:
-pgsql
-
 Authorization: Bearer your_access_token
 Content-Type: application/json
 Body (JSON):
@@ -212,36 +273,31 @@ json
 }
 Expected Response:
 json
-
 {
-    "id": 3,
+    "id": 2,
     "client_name": "Company B",
-    "created_at": "2019-12-24T11:03:55.931739+05:30",
-    "created_by": "Your Username",
-    "updated_at": "2019-12-24T11:03:55.931739+05:30"
+    "projects": [],
+    "created_at": "2025-02-17T16:23:09.566921Z",
+    "updated_at": "2025-02-18T05:29:08.928888Z",
+    "created_by": "zaid"
 }
 🟢 Step 7: Delete a Client
 Method: DELETE
 URL:
-ruby
-
 http://127.0.0.1:8000/api/clients/3/
 Headers:
 makefile
 
 Authorization: Bearer your_access_token
 Expected Response:
-yaml
 
 Status Code: 204 No Content (Client Deleted)
 🟢 Step 8: Create a New Project
 Method: POST
 URL:
-ruby
 
 http://127.0.0.1:8000/api/projects/
 Headers:
-pgsql
 
 Authorization: Bearer your_access_token
 Content-Type: application/json
@@ -250,33 +306,27 @@ json
 
 {
     "project_name": "Project A",
-    "client_id": 1,
+    "client": 7,
     "users": [1]
 }
 Expected Response:
 json
 
 {
-    "id": 3,
+    "id": 9,
     "project_name": "Project A",
-    "client": "Nimap",
+    "client": 7,
     "users": [
-        {
-            "id": 1,
-            "name": "Rohit"
-        }
+        1
     ],
-    "created_at": "2019-12-24T11:03:55.931739+05:30",
-    "created_by": "Ganesh"
+    "created_at": "2025-02-18T05:31:28.321921Z",
+    "created_by": "zaid"
 }
 🟢 Step 9: List Projects Assigned to Logged-in User
 Method: GET
 URL:
-arduino
-
 http://127.0.0.1:8000/api/user/projects/
 Headers:
-makefile
 
 Authorization: Bearer your_access_token
 Expected Response:
@@ -286,16 +336,72 @@ json
     {
         "id": 1,
         "project_name": "Project A",
-        "client_name": "Client A",
-        "created_at": "2019-12-24T11:03:55.931739+05:30",
-        "created_by": "Ganesh"
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:02:36.568657Z",
+        "created_by": "zaid"
     },
     {
         "id": 2,
-        "project_name": "Project B",
-        "client_name": "Client A",
-        "created_at": "2019-12-24T11:03:55.931739+05:30",
-        "created_by": "Ganesh"
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:11:59.429003Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 4,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:28:25.691090Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 5,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:32:18.242247Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 6,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:40:39.005198Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 7,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-17T19:41:47.906098Z",
+        "created_by": "zaid"
+    },
+    {
+        "id": 8,
+        "project_name": "Project A",
+        "client": 1,
+        "users": [
+            1
+        ],
+        "created_at": "2025-02-18T03:51:43.050946Z",
+        "created_by": "zaid"
     }
 ]
 🟢 Step 10: Delete a Project
@@ -303,10 +409,7 @@ Method: DELETE
 URL:
 http://127.0.0.1:8000/api/projects/3/
 Headers:
-makefile
-
 Authorization: Bearer your_access_token
 Expected Response:
-yaml
 
 Status Code: 204 No Content (Project Deleted)
