@@ -208,6 +208,20 @@ Copy `access_token` and use it in all API requests.
       "users": [1]
   }
   ```
+  - **Expected Response:**
+  ```json
+
+{
+    "id": 9,
+    "project_name": "Project A",
+    "client": 7,
+    "users": [
+        1
+    ],
+    "created_at": "2025-02-18T05:31:28.321921Z",
+    "created_by": "zaid"
+}
+
 
 ### 🟢 Step 9: List Projects Assigned to Logged-in User
 - **Method:** GET  
@@ -217,7 +231,7 @@ Copy `access_token` and use it in all API requests.
   Authorization: Bearer your_access_token
   ```
   - **Expected Response:**
-  ```
+  ```json
  [
     {
         "id": 1,
