@@ -2,7 +2,7 @@ from rest_framework import generics, permissions
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .models import Client, Project
-from rest_framework import serializers  # ✅ Add this line
+from rest_framework import serializers  #  Add this line
 
 from .serializers import ClientSerializer, ProjectSerializer, UserSerializer
 
@@ -28,18 +28,17 @@ class ProjectListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        client_id = self.request.data.get('client')  # ✅ Ensure client ID is received
+        client_id = self.request.data.get('client')  #  Ensure client ID is received
         if not client_id:
             raise serializers.ValidationError({"client": "This field is required."})
 
         try:
-            client = Client.objects.get(id=client_id)  # ✅ Ensure client exists
+            client = Client.objects.get(id=client_id)  #  Ensure client exists
         except Client.DoesNotExist:
             raise serializers.ValidationError({"client": "Client does not exist."})
 
-        serializer.save(client=client, created_by=self.request.user)  # ✅ Assign client properly
+        serializer.save(client=client, created_by=self.request.user)  #  Assign client properly
 
-  # ✅ Assign client properly
  # Assign logged-in user
 
 # Retrieve, update, or delete a specific project
