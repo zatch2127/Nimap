@@ -1,4 +1,4 @@
-# Nimap: Django REST API for Client & Project Management
+![db](https://github.com/user-attachments/assets/6ed0527c-673a-42b5-807e-eb7e2e47d628)# Nimap: Django REST API for Client & Project Management
 
 A Django REST Framework (DRF) API that allows authentication (JWT), client & project management, and user assignments.
 
@@ -370,3 +370,6 @@ Copy `access_token` and use it in all API requests.
   Status Code: 204 No Content (Project Deleted)
   ```
 
+## 2. DB Design?
+
+![db](https://github.com/user-attachments/assets/d2adad1f-c79f-406c-ba12-becc9e1b98ae)
