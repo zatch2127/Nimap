@@ -168,6 +168,43 @@ Copy `access_token` and use it in all API requests.
   ```
   Authorization: Bearer your_access_token
   ```
+  - **Expected Response:**
+  ```json
+
+{
+    "id": 1,
+    "client_name": "Company B",
+    "projects": [
+        {
+            "id": 1,
+            "project_name": "Project A"
+        },
+        {
+            "id": 2,
+            "project_name": "Project A"
+        },
+        {
+            "id": 4,
+            "project_name": "Project A"
+        },
+        {
+            "id": 5,
+            "project_name": "Project A"
+        },
+        {
+            "id": 6,
+            "project_name": "Project A"
+        },
+        {
+            "id": 7,
+            "project_name": "Project A"
+        }
+    ],
+    "created_at": "2025-02-17T15:02:13.795352Z",
+    "updated_at": "2025-02-18T05:25:39.038304Z",
+    "created_by": "zaid"
+}
+```
 
 ### 🟢 Step 6: Update Client Info
 - **Method:** PUT  
@@ -182,6 +219,20 @@ Copy `access_token` and use it in all API requests.
   {
       "client_name": "Company B"
   }
+  ```
+  - **Expected Response:**
+  ```json
+  
+
+{
+    "id": 2,
+    "client_name": "Company B",
+    "projects": [],
+    "created_at": "2025-02-17T16:23:09.566921Z",
+    "updated_at": "2025-02-18T05:29:08.928888Z",
+    "created_by": "zaid"
+
+}
   ```
 
 ### 🟢 Step 7: Delete a Client
@@ -221,7 +272,7 @@ Copy `access_token` and use it in all API requests.
     "created_at": "2025-02-18T05:31:28.321921Z",
     "created_by": "zaid"
 }
-
+```
 
 ### 🟢 Step 9: List Projects Assigned to Logged-in User
 - **Method:** GET  
