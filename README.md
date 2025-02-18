@@ -46,14 +46,10 @@ DATABASES = {
         'USER': 'your_db_user',
         'PASSWORD': 'your_db_password',
         'HOST': 'localhost',
-        'PORT': '3306',  # MySQL default port
+        'PORT': '3306', 
     }
 }
-If you're using PostgreSQL, replace mysqlclient with psycopg2 and update the ENGINE field:
 
-python
-
-'ENGINE': 'django.db.backends.postgresql',
 ✅ Step 4: Apply Migrations
 Run the following commands to create the necessary database tables:
 
