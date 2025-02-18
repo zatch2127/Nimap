@@ -372,10 +372,10 @@ Copy `access_token` and use it in all API requests.
 ## 3. DB Design?
 
 ![db](https://github.com/user-attachments/assets/d2adad1f-c79f-406c-ba12-becc9e1b98ae)
+# Databases Overview
 
-## 4 . Databases Overview :-
-[Uploading database n: Unknown database 'tables'
-mysql> show tables;
+## Available Tables:
+```
 +----------------------------+
 | Tables_in_nimap            |
 +----------------------------+
@@ -393,9 +393,11 @@ mysql> show tables;
 | django_migrations          |
 | django_session             |
 +----------------------------+
-13 rows in set (0.03 sec)
+(13 rows)
+```
 
-mysql> select * from api_client;
+## Table: `api_client`
+```
 +----+----------------+----------------------------+---------------+----------------------------+
 | id | client_name    | created_at                 | created_by_id | updated_at                 |
 +----+----------------+----------------------------+---------------+----------------------------+
@@ -406,9 +408,11 @@ mysql> select * from api_client;
 |  7 | Company B      | 2025-02-18 05:27:19.759788 |             1 | NULL                       |
 |  8 | Company Vatsal | 2025-02-18 06:32:31.945513 |             2 | NULL                       |
 +----+----------------+----------------------------+---------------+----------------------------+
-6 rows in set (0.01 sec)
+(6 rows)
+```
 
-mysql> select * from api_project;
+## Table: `api_project`
+```
 +----+--------------+----------------------------+-----------+---------------+
 | id | project_name | created_at                 | client_id | created_by_id |
 +----+--------------+----------------------------+-----------+---------------+
@@ -419,9 +423,11 @@ mysql> select * from api_project;
 |  6 | Project A    | 2025-02-17 19:40:39.005198 |         1 |             1 |
 |  9 | Project A    | 2025-02-18 05:31:28.321921 |         7 |             1 |
 +----+--------------+----------------------------+-----------+---------------+
-6 rows in set (0.01 sec)
+(6 rows)
+```
 
-mysql> select * from api_project_users;
+## Table: `api_project_users`
+```
 +----+------------+---------+
 | id | project_id | user_id |
 +----+------------+---------+
@@ -432,18 +438,22 @@ mysql> select * from api_project_users;
 |  6 |          6 |       1 |
 |  9 |          9 |       1 |
 +----+------------+---------+
-6 rows in set (0.01 sec)
+(6 rows)
+```
 
-mysql> select * from auth_user;
-+----+------------------------------------------------------------------------------------------+------------+--------------+----------+------------+-----------+----------------------+----------+-----------+----------------------------+
-| id | password                                                                                 | last_login | is_superuser | username | first_name | last_name | email                | is_staff | is_active | date_joined                |
-+----+------------------------------------------------------------------------------------------+------------+--------------+----------+------------+-----------+----------------------+----------+-----------+----------------------------+
-|  1 | pbkdf2_sha256$870000$oBYcABy7ARrzNUe8UZLSOK$y3/P88aEpKMkJV8oqPetAyWXz78I1eh8LzvZaUvgH1Y= | NULL       |            1 | zaid     |            |           | zatch360aa@gmail.com |        1 |         1 | 2025-02-17 15:00:57.715076 |
-|  2 | pbkdf2_sha256$870000$3t7TE1bmEsB4StU6H1KcTy$57kCoGkPqBZKi91hhXsIb7qv1yNSWHVGinm/rFq8Vw8= | NULL       |            1 | Vatsl    |            |           | vatsal@gmail.com     |        1 |         1 | 2025-02-18 06:30:53.218889 |
-+----+------------------------------------------------------------------------------------------+------------+--------------+----------+------------+-----------+----------------------+----------+-----------+----------------------------+
-2 rows in set (0.01 sec)
+## Table: `auth_user`
+```
++----+----------+-----------+----------------------+----------+-----------+----------------------------+
+| id | username | email                | is_staff | is_active | date_joined                |
++----+----------+-----------+----------------------+----------+-----------+----------------------------+
+|  1 | zaid     | zatch360aa@gmail.com |        1 |         1 | 2025-02-17 15:00:57.715076 |
+|  2 | Vatsl    | vatsal@gmail.com     |        1 |         1 | 2025-02-18 06:30:53.218889 |
++----+----------+-----------+----------------------+----------+-----------+----------------------------+
+(2 rows)
+```
 
-mysql> select * from django_content_type;
+## Table: `django_content_type`
+```
 +----+--------------+-------------+
 | id | app_label    | model       |
 +----+--------------+-------------+
@@ -456,129 +466,7 @@ mysql> select * from django_content_type;
 |  5 | contenttypes | contenttype |
 |  6 | sessions     | session     |
 +----+--------------+-------------+
-8 rows in set (0.01 sec)
+(8 rows)
+```
 
-mysql> show tables;
-+----------------------------+
-| Tables_in_nimap            |
-+----------------------------+
-| api_client                 |
-| api_project                |
-| api_project_users          |
-| auth_group                 |
-| auth_group_permissions     |
-| auth_permission            |
-| auth_user                  |
-| auth_user_groups           |
-| auth_user_user_permissions |
-| django_admin_log           |
-| django_content_type        |
-| django_migrations          |
-| django_session             |
-+----------------------------+
-13 rows in set (0.03 sec)
-
-mysql> select * from api_client;
-+----+----------------+----------------------------+---------------+----------------------------+
-| id | client_name    | created_at                 | created_by_id | updated_at                 |
-+----+----------------+----------------------------+---------------+----------------------------+
-|  1 | Company B      | 2025-02-17 15:02:13.795352 |             1 | 2025-02-18 05:25:39.038304 |
-|  4 | Company R      | 2025-02-18 04:47:07.934553 |             1 | 2025-02-18 04:47:08.000000 |
-|  5 | Company C      | 2025-02-18 05:01:32.080409 |             1 | 2025-02-18 05:01:32.000000 |
-|  6 | Company K      | 2025-02-18 05:13:50.707524 |             1 | NULL                       |
-|  7 | Company B      | 2025-02-18 05:27:19.759788 |             1 | NULL                       |
-|  8 | Company Vatsal | 2025-02-18 06:32:31.945513 |             2 | NULL                       |
-+----+----------------+----------------------------+---------------+----------------------------+
-6 rows in set (0.01 sec)
-
-mysql> select * from api_project;
-+----+--------------+----------------------------+-----------+---------------+
-| id | project_name | created_at                 | client_id | created_by_id |
-+----+--------------+----------------------------+-----------+---------------+
-|  1 | Project A    | 2025-02-17 19:02:36.568657 |         1 |             1 |
-|  2 | Project A    | 2025-02-17 19:11:59.429003 |         1 |             1 |
-|  4 | Project A    | 2025-02-17 19:28:25.691090 |         1 |             1 |
-|  5 | Project A    | 2025-02-17 19:32:18.242247 |         1 |             1 |
-|  6 | Project A    | 2025-02-17 19:40:39.005198 |         1 |             1 |
-|  9 | Project A    | 2025-02-18 05:31:28.321921 |         7 |             1 |
-+----+--------------+----------------------------+-----------+---------------+
-6 rows in set (0.01 sec)
-
-mysql> select * from api_project_users;
-+----+------------+---------+
-| id | project_id | user_id |
-+----+------------+---------+
-|  1 |          1 |       1 |
-|  2 |          2 |       1 |
-|  4 |          4 |       1 |
-|  5 |          5 |       1 |
-|  6 |          6 |       1 |
-|  9 |          9 |       1 |
-+----+------------+---------+
-6 rows in set (0.01 sec)
-
-mysql> select * from auth_user;
-+----+------------------------------------------------------------------------------------------+------------+--------------+----------+------------+-----------+----------------------+----------+-----------+----------------------------+
-| id | password                                                                                 | last_login | is_superuser | username | first_name | last_name | email                | is_staff | is_active | date_joined                |
-+----+------------------------------------------------------------------------------------------+------------+--------------+----------+------------+-----------+----------------------+----------+-----------+----------------------------+
-|  1 | pbkdf2_sha256$870000$oBYcABy7ARrzNUe8UZLSOK$y3/P88aEpKMkJV8oqPetAyWXz78I1eh8LzvZaUvgH1Y= | NULL       |            1 | zaid     |            |           | zatch360aa@gmail.com |        1 |         1 | 2025-02-17 15:00:57.715076 |
-|  2 | pbkdf2_sha256$870000$3t7TE1bmEsB4StU6H1KcTy$57kCoGkPqBZKi91hhXsIb7qv1yNSWHVGinm/rFq8Vw8= | NULL       |            1 | Vatsl    |            |           | vatsal@gmail.com     |        1 |         1 | 2025-02-18 06:30:53.218889 |
-+----+------------------------------------------------------------------------------------------+------------+--------------+----------+------------+-----------+----------------------+----------+-----------+----------------------------+
-2 rows in set (0.01 sec)
-
-
-mysql> select * from django_content_type;
-+----+--------------+-------------+
-| id | app_label    | model       |
-+----+--------------+-------------+
-|  1 | admin        | logentry    |
-|  7 | api          | client      |
-|  8 | api          | project     |
-|  3 | auth         | group       |
-|  2 | auth         | permission  |
-|  4 | auth         | user        |
-|  5 | contenttypes | contenttype |
-|  6 | sessions     | session     |
-+----+--------------+-------------+
-8 rows in set (0.01 sec)
-
-mysql>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ame.txt…]()
-
+This README provides an overview of the database schema, showing all tables and sample data from key tables.
